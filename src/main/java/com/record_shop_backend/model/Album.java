@@ -22,5 +22,5 @@ public class Album {
     private String name;
     private String artist;
     private Genre genre;
-    private int release_year;
+    private Integer release_year;
 }
