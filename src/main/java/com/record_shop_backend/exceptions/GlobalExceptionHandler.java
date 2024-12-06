@@ -14,8 +14,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(PropertyValueException.class)
-    public ResponseEntity<Object> handlePropertyValueException(PropertyValueException e) {
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<Object> handleNullValueException(NullPointerException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 

@@ -37,9 +37,13 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public Album addAlbum(Album album) {
-//        if(album.getName().isBlank() || album.getArtist().isBlank()) {
-//            throw new BlankFieldException("Album fields cannot be blank!");
-//        }
+        if (album.getName() == null || album.getArtist() == null || album.getGenre() == null) {
+            throw new NullPointerException("Album fields cannot be null!");
+        }
+
+        if(album.getName().isBlank() || album.getArtist().isBlank()) {
+            throw new BlankFieldException("Album fields cannot be blank!");
+        }
         return albumRepository.save(album);
     }
 
