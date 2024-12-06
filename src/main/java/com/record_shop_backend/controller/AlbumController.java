@@ -18,8 +18,8 @@ public class AlbumController {
     private AlbumService albumService;
 
     @GetMapping
-    public ResponseEntity<List<Album>> getAlbums() {
-        return new ResponseEntity<>(albumService.getAlbums(), HttpStatus.OK);
+    public ResponseEntity<List<Album>> getAllAlbums() {
+        return new ResponseEntity<>(albumService.getAllAlbums(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -34,8 +34,13 @@ public class AlbumController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Album> updateTodoItem(@PathVariable("id") Long id, @RequestBody Album album) {
+    public ResponseEntity<Album> updateAlbum(@PathVariable("id") Long id, @RequestBody Album album) {
         return new ResponseEntity<>(albumService.updateAlbum(id, album), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAlbum(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(albumService.deleteAlbum(id), HttpStatus.ACCEPTED);
     }
 
 }

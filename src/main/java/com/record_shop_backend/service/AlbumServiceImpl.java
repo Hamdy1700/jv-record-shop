@@ -18,7 +18,7 @@ public class AlbumServiceImpl implements AlbumService {
     AlbumRepository albumRepository;
 
     @Override
-    public List<Album> getAlbums() {
+    public List<Album> getAllAlbums() {
         List<Album> albums = new ArrayList<>();
         albumRepository.findAll().forEach(albums::add);
         return albums;
@@ -63,5 +63,17 @@ public class AlbumServiceImpl implements AlbumService {
             album.setReleaseYear(existingAlbum.getReleaseYear());
         }
         return albumRepository.save(album);
+    }
+
+    @Override
+    public String deleteAlbum(Long id) {
+//        Optional<Album> album = albumRepository.findById(id);
+//
+//        if(album.isEmpty()) {
+//            throw new ItemNotFoundException(String.format("Album with id %s cannot be found!", id));
+//        }
+
+        albumRepository.deleteById(id);
+        return String.format("Todo with item id '%s' has been deleted successfully", id);
     }
 }
