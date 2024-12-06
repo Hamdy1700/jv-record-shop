@@ -1,5 +1,6 @@
 package com.record_shop_backend.service;
 
+import com.record_shop_backend.exceptions.BlankFieldException;
 import com.record_shop_backend.model.Album;
 import com.record_shop_backend.repository.AlbumRepository;
 import com.record_shop_backend.exceptions.ItemNotFoundException;
@@ -36,6 +37,9 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public Album addAlbum(Album album) {
+//        if(album.getName().isBlank() || album.getArtist().isBlank()) {
+//            throw new BlankFieldException("Album fields cannot be blank!");
+//        }
         return albumRepository.save(album);
     }
 
