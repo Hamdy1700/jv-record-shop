@@ -15,11 +15,22 @@ import java.util.List;
 public class AlbumController {
 
     @Autowired
-    AlbumService albumService;
+    private AlbumService albumService;
 
     @GetMapping
-    public ResponseEntity<List<Album>> getAllTodoItems() {
+    public ResponseEntity<List<Album>> getAlbums() {
         return new ResponseEntity<>(albumService.getAlbums(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Album> getAlbumById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(albumService.getAlbumById(id), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Album> addAlbum(@RequestBody Album album) {
+        Album newAlbum = albumService.addAlbum(album);
+        return new ResponseEntity<>(newAlbum, HttpStatus.CREATED);
     }
 
 }

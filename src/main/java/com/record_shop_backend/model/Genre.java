@@ -4,7 +4,7 @@ public enum Genre {
     POP,
     ROCK,
     HIP_HOP,
-    RB,
+    R_AND_B,
     EDM,
     COUNTRY,
     JAZZ,
