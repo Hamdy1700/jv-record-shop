@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
 import java.util.List;
 
 @RestController
@@ -40,12 +39,12 @@ public class AlbumController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAlbum(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(albumService.deleteAlbum(id), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(albumService.deleteAlbum(id), HttpStatus.OK);
     }
 
     @DeleteMapping()
     public ResponseEntity<String> deleteAllAlbums() {
-        return new ResponseEntity<>(albumService.deleteAllAlbums(), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(albumService.deleteAllAlbums(), HttpStatus.OK);
     }
 
 }

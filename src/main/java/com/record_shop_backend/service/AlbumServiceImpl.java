@@ -2,11 +2,10 @@ package com.record_shop_backend.service;
 
 import com.record_shop_backend.model.Album;
 import com.record_shop_backend.repository.AlbumRepository;
-import exceptions.ItemNotFoundException;
+import com.record_shop_backend.exceptions.ItemNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -67,12 +66,12 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public String deleteAlbum(Long id) {
-//        Optional<Album> album = albumRepository.findById(id);
-//
-//        if(album.isEmpty()) {
-//            throw new ItemNotFoundException(String.format("Album with id %s cannot be found!", id));
-//        }
+        Optional<Album> album = albumRepository.findById(id);
 
+        if (album.isEmpty()) {
+            throw new ItemNotFoundException(String.format("Album with id %s cannot be found!", id));
+        }
+        
         albumRepository.deleteById(id);
         return String.format("Todo with item id '%s' has been deleted successfully", id);
     }

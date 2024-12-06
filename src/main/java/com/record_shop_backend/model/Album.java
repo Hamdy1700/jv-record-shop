@@ -21,11 +21,11 @@ public class Album {
     Long id;
     @Column(nullable = false)
     String name;
-    @Column
+    @Column(nullable = false)
     String artist;
-    @Column
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     Genre genre;
-    @Column(name = "release_year")
+    @Column(name = "release_year", nullable = false)
     int releaseYear;
 }
