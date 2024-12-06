@@ -33,4 +33,9 @@ public class AlbumController {
         return new ResponseEntity<>(newAlbum, HttpStatus.CREATED);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Album> updateTodoItem(@PathVariable("id") Long id, @RequestBody Album album) {
+        return new ResponseEntity<>(albumService.updateAlbum(id, album), HttpStatus.CREATED);
+    }
+
 }

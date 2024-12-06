@@ -6,6 +6,7 @@ import exceptions.ItemNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +37,31 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public Album addAlbum(Album album) {
+        return albumRepository.save(album);
+    }
+
+    @Override
+    public Album updateAlbum(Long id, Album album) {
+        Optional<Album> existingAlbumOptional = albumRepository.findById(id);
+
+        if (existingAlbumOptional.isEmpty()) {
+            throw new ItemNotFoundException(String.format("Album with id %s cannot be found!", id));
+        }
+
+        Album existingAlbum = existingAlbumOptional.get();
+        album.setId(id);
+        if (album.getName() == null) {
+            album.setName(existingAlbum.getName());
+        }
+        if (album.getArtist() == null) {
+            album.setArtist(existingAlbum.getArtist());
+        }
+        if (album.getGenre() == null) {
+            album.setGenre(existingAlbum.getGenre());
+        }
+        if (album.getName() == null) {
+            album.setReleaseYear(existingAlbum.getReleaseYear());
+        }
         return albumRepository.save(album);
     }
 }
