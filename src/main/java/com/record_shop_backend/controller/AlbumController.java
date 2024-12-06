@@ -43,4 +43,9 @@ public class AlbumController {
         return new ResponseEntity<>(albumService.deleteAlbum(id), HttpStatus.ACCEPTED);
     }
 
+    @DeleteMapping()
+    public ResponseEntity<String> deleteAllAlbums() {
+        return new ResponseEntity<>(albumService.deleteAllAlbums(), HttpStatus.ACCEPTED);
+    }
+
 }

@@ -76,4 +76,10 @@ public class AlbumServiceImpl implements AlbumService {
         albumRepository.deleteById(id);
         return String.format("Todo with item id '%s' has been deleted successfully", id);
     }
+
+    @Override
+    public String deleteAllAlbums() {
+        albumRepository.deleteAll();
+        return "All albums deleted successfully";
+    }
 }
