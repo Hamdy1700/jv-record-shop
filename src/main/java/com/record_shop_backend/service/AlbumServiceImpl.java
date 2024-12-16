@@ -55,8 +55,16 @@ public class AlbumServiceImpl implements AlbumService {
             throw new ItemNotFoundException(String.format("Album with id %s cannot be found!", id));
         }
 
-        if(album.getName().isBlank() || album.getArtist().isBlank()) {
-            throw new BlankFieldException("Album fields cannot be blank!");
+        if (album.getName() != null) {
+            if (album.getName().isBlank()) {
+                throw new BlankFieldException("Album fields cannot be blank!");
+            }
+        }
+
+        if (album.getArtist() != null) {
+            if (album.getArtist().isBlank()) {
+                throw new BlankFieldException("Album fields cannot be blank!");
+            }
         }
 
         Album existingAlbum = existingAlbumOptional.get();
